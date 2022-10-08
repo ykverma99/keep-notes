@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { GlobalContext } from "./context/GlobalContext";
+// import Menu from "./components/Menu";
+import Navbar from "./Header/Navbar";
+import Main from "./Main/Main";
+import Sidebar from "./sidebar/Sidebar";
 
-function App() {
+const App = () => {
+  const {togglemenu} = useContext(GlobalContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <main className={`flex ${!togglemenu ? 'space-x-72': 'space-x-28'}`}>
+        <Sidebar />
+        <Main />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
